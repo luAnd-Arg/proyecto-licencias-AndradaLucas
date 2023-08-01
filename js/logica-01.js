@@ -60,7 +60,7 @@ function realizarNuevaConsulta() {
   nombre = obtenerValorNoNumerico("Ingresa tu nombre:");
   apellido = obtenerValorNoNumerico("Ingresa tu apellido:");
   dni = obtenerValorNumerico("Ingresa tu DNI:");
-  nacimiento = obtenerValorNumerico("Ingresa tu fecha de nacimiento (ejemplo: 01/01/2023):");
+  nacimiento = obtenerValorNoNumerico("Ingresa tu fecha de nacimiento (ejemplo: 01/01/2023):");
   edad = obtenerValorNumerico("Ingresa tu edad:");
   pais = obtenerValorNoNumerico("¿Cuál es tu país?");
   provincia = obtenerValorNoNumerico("¿Cuál es tu provincia?");
@@ -70,7 +70,7 @@ function realizarNuevaConsulta() {
   telefono = obtenerValorNumerico("Ingresa tu número de celular:");
   cargo = obtenerValorNoNumerico("¿Cuál es tu cargo?");
   numeroCargo = obtenerValorNumerico("Ingresa el número de cargo:");
-  inicioLaboral = obtenerValorNumerico("Ingresa la fecha en la que iniciaste laboralmente (ejemplo: 01/01/2023):");
+  inicioLaboral = obtenerValorNoNumerico("Ingresa la fecha en la que iniciaste laboralmente (ejemplo: 01/01/2023):");
   obraSocial = obtenerValorNoNumerico("¿Cuál es tu obra social?");
   numeroObraSocial = obtenerValorNumerico("Ingresa el número de la obra social:");
 }
@@ -133,8 +133,9 @@ var baseDeDatos = [];
 function agregar() {
   baseDeDatos.push(nuevaConsulta);
   console.log(baseDeDatos);
-  document.getElementById("tabla1").innerHTML += `<tbody><td>` + nuevaConsulta.nombre + `</td><td>` + nuevaConsulta.apellido + `</td><td>` + nuevaConsulta.dni + `</td><td>` + nuevaConsulta.nacimiento + `</td><td>` + nuevaConsulta.edad + `</td><td>` + nuevaConsulta.pais + `</td><td>` + nuevaConsulta.provincia + `</td><td>` + nuevaConsulta.ciudad + `</td><td>` + nuevaConsulta.direccion + `</td><td>` + nuevaConsulta.mail + `</td><td>` + nuevaConsulta.telefono + `</td></tbody>`
-  document.getElementById("tabla2").innerHTML += `<tbody><td>` + nuevaConsulta.cargo + `</td><td>` + nuevaConsulta.numeroCargo + `</td><td>` + nuevaConsulta.inicioLaboral + `</td><td>` + nuevaConsulta.obraSocial + `</td><td>` + nuevaConsulta.numeroObraSocial + `</td></tbody>`
+  document.getElementById("tabla1").innerHTML += `<tbody><td>` + nuevaConsulta.nombre + `</td><td>` + nuevaConsulta.apellido + `</td><td>` + nuevaConsulta.dni + `</td><td>` + nuevaConsulta.nacimiento + `</td><td>` + nuevaConsulta.edad + `</td></tbody>`
+  document.getElementById("tabla2").innerHTML += `<tbody><td>` + nuevaConsulta.pais + `</td><td>` + nuevaConsulta.provincia + `</td><td>` + nuevaConsulta.ciudad + `</td><td>` + nuevaConsulta.direccion + `</td><td>` + nuevaConsulta.mail + `</td><td>` + nuevaConsulta.telefono + `</td></tbody>`
+  document.getElementById("tabla3").innerHTML += `<tbody><td>` + nuevaConsulta.cargo + `</td><td>` + nuevaConsulta.numeroCargo + `</td><td>` + nuevaConsulta.inicioLaboral + `</td><td>` + nuevaConsulta.obraSocial + `</td><td>` + nuevaConsulta.numeroObraSocial + `</td></tbody>`
 }
 function resetear2(e) {
   e.preventDefault(); // Evitar el restablecimiento del formulario
