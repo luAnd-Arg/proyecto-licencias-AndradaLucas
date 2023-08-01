@@ -133,9 +133,9 @@ var baseDeDatos = [];
 function agregar() {
   baseDeDatos.push(nuevaConsulta);
   console.log(baseDeDatos);
-  document.getElementById("tabla1").innerHTML += `<tbody><td>` + nuevaConsulta.nombre + `</td><td>` + nuevaConsulta.apellido + `</td><td>` + nuevaConsulta.dni + `</td><td>` + nuevaConsulta.nacimiento + `</td><td>` + nuevaConsulta.edad + `</td></tbody>`
-  document.getElementById("tabla2").innerHTML += `<tbody><td>` + nuevaConsulta.pais + `</td><td>` + nuevaConsulta.provincia + `</td><td>` + nuevaConsulta.ciudad + `</td><td>` + nuevaConsulta.direccion + `</td><td>` + nuevaConsulta.mail + `</td><td>` + nuevaConsulta.telefono + `</td></tbody>`
-  document.getElementById("tabla3").innerHTML += `<tbody><td>` + nuevaConsulta.cargo + `</td><td>` + nuevaConsulta.numeroCargo + `</td><td>` + nuevaConsulta.inicioLaboral + `</td><td>` + nuevaConsulta.obraSocial + `</td><td>` + nuevaConsulta.numeroObraSocial + `</td></tbody>`
+  document.getElementById("tabla1").innerHTML += `<tbody><td>` + nuevaConsulta.nombre + `</td><td>` + nuevaConsulta.apellido + `</td><td>` + nuevaConsulta.dni + `</td><td>` + nuevaConsulta.nacimiento + `</td><td>` + nuevaConsulta.edad + `</td></tbody>`;
+  document.getElementById("tabla2").innerHTML += `<tbody><td>` + nuevaConsulta.pais + `</td><td>` + nuevaConsulta.provincia + `</td><td>` + nuevaConsulta.ciudad + `</td><td>` + nuevaConsulta.direccion + `</td><td>` + nuevaConsulta.mail + `</td><td>` + nuevaConsulta.telefono + `</td></tbody>`;
+  document.getElementById("tabla3").innerHTML += `<tbody><td>` + nuevaConsulta.cargo + `</td><td>` + nuevaConsulta.numeroCargo + `</td><td>` + nuevaConsulta.inicioLaboral + `</td><td>` + nuevaConsulta.obraSocial + `</td><td>` + nuevaConsulta.numeroObraSocial + `</td></tbody>`;
 }
 function resetear2(e) {
   e.preventDefault(); // Evitar el restablecimiento del formulario
