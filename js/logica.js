@@ -32,6 +32,7 @@ const cancelar =  document.getElementById("btnCancelar").addEventListener("click
 
 
 
+
 // 
 
 // let letra = "c" // Le asignamos con un string que va con comillas
