@@ -23,27 +23,27 @@ class Empleado {
   }
 }
 
-let empleados = []; // Array para almacenar objetos Empleado
+const empleados = []; // Array para almacenar objetos Empleado
 
 function consulta() {
-  const nombre = document.getElementById("inputNombre").value;
-  const apellido = document.getElementById("inputApellido").value;
-  const dni = document.getElementById("inputDni").value;
-  const nacimiento = document.getElementById("inputNacimiento").value;
-  const edad = document.getElementById("inputEdad").value;
-  const pais = document.getElementById("inputPais").value;
-  const provincia = document.getElementById("inputProvincia").value;
-  const ciudad = document.getElementById("inputCiudad").value;
-  const direccion = document.getElementById("inputDireccion").value;
-  const mail = document.getElementById("inputMail").value;
-  const telefono = document.getElementById("inputTelefono").value;
-  const cargo = document.getElementById("inputCargo").value;
-  const numeroCargo = document.getElementById("inputNumeroCargo").value;
-  const inicioLaboral = document.getElementById("inputInicioLaboral").value;
-  const obraSocial = document.getElementById("inputObraSocial").value;
-  const numeroObraSocial = document.getElementById("inputNumeroObraSocial").value;
+  nombre = document.getElementById("inputNombre").value;
+  apellido = document.getElementById("inputApellido").value;
+  dni = document.getElementById("inputDni").value;
+  nacimiento = document.getElementById("inputNacimiento").value;
+  edad = document.getElementById("inputEdad").value;
+  pais = document.getElementById("inputPais").value;
+  provincia = document.getElementById("inputProvincia").value;
+  ciudad = document.getElementById("inputCiudad").value;
+  direccion = document.getElementById("inputDireccion").value;
+  mail = document.getElementById("inputMail").value;
+  telefono = document.getElementById("inputTelefono").value;
+  cargo = document.getElementById("inputCargo").value;
+  numeroCargo = document.getElementById("inputNumeroCargo").value;
+  inicioLaboral = document.getElementById("inputInicioLaboral").value;
+  obraSocial = document.getElementById("inputObraSocial").value;
+  numeroObraSocial = document.getElementById("inputNumeroObraSocial").value;
   // Crea un nuevo objeto Empleado
-  const nuevoEmpleado = new Empleado(
+  nuevoEmpleado = new Empleado(
     nombre,
     apellido,
     dni,
@@ -112,7 +112,10 @@ function consulta() {
  celdaObraSocial.textContent = nuevoEmpleado.obraSocial;
  celdaNumeroObraSocial.textContent = nuevoEmpleado.numeroObraSocial;
 
- console.log(empleados);
+
+ // guardar en el localStorage el array de empleados 
+localStorage.setItem("empleados", JSON.stringify(empleados));
+console.log (nuevoEmpleado.nombre) //aqui esta imprimiendo lo que le pongo en el primer formulario
  }
 
 function tomarOnclick(){
@@ -152,80 +155,50 @@ function resetear2() {
 
 const cancelar2 = document.getElementById("btnCancelar2").addEventListener("click", resetear2);
 const otraConsulta = document.getElementById("btnNuevaConsulta").addEventListener("click", newConstult);
+//funcion realizada con el onInput desde pages 1
+function mostrarAñosDisponibles(ultimoAño) {
+  const añoActual = new Date().getFullYear();
+  añosDisponibles = [];
+  ultimoAñoParaUsar = ultimoAño;
+  
+  for (let año = parseInt(ultimoAño) + 1; año <= añoActual; año++) {
+    if(año >= 2016) {
+      añosDisponibles.push(año);
+    }
+  }
+  const listadoDeAños = document.getElementById("listadoDeAños");
+  listadoDeAños.innerText = `Licencias disponibles: ${añosDisponibles.join(", ")}`;
 
-// ... El resto de tu código ...
+ 
+  añosDisponibles.forEach(element => {
+    const option = document.createElement("option");
+    option.value = element;
+    option.textContent = element;
+  }
+ );
+}
 
-// AQUI HARE UNOS CALCULOS DE LICENCIAS
+//aqui debo hacer el llamado de la funcion del btn de enviar 
+let añoElegido = "";
+function enviarDatos(e) {
+  e.preventDefault();
+  const añoConsecutivo = añosDisponibles[0];
+  let meses = document.getElementById("mesDelAño");
+  const mesElegido = meses.value;
+  let quincenas = document.getElementById("quincenaSeleccionada");
+  const quincenaValor = quincenas.value;
+  // crear el contenido del text 
 
+ 
+  const mensaje = document.getElementById("mensajeFinal");
+  const mensajeFinal = `hola ,${nuevoEmpleado.nombre} decidiste que haras uso de tu licencia del año ${añoConsecutivo} , en el mes de ${mesElegido} los dias ${quincenaValor} . Muchas Gracias` ;
+  mensaje.textContent = mensajeFinal;
+  }
+// crear el evento del btn 
 
-// // solicitar las licencias disponibles
+btnEnviarDatosForm = document.getElementById("btnEnviarForm").addEventListener("click", enviarDatos);
 
-// let ultimaLic = prompt("¿Cuándo fue el ultimo año que te tomaste tus vacaciones?.Indícala en años.");
-
-// function calcularVacaciones(ultimaLic) {
-//   let añosDesdeUltimaLic = 2023 - ultimaLic;
-//   switch (añosDesdeUltimaLic - 1) {
-//     case 4:
-//       return "dispones desde el año 2019 y tienes derecho a 12 días de vacaciones.";
-//     case 3:
-//       return "dispones desde el año 2020 y tienes derecho a 14 días de vacaciones.";
-//     case 2:
-//       return "dispones desde el año 2021 y tienes derecho a 16 días de vacaciones.";
-//     case 1:
-//       return "dispones desde el año 2022 y tienes derecho a 18 días de vacaciones.";
-//     case 0:
-//       return "dispones desde el año 2023 y tienes derecho a 20 días de vacaciones.";
-//     default:
-//       return "No se pudo determinar la cantidad de días de vacaciones. ten en cuenta que las licencias disponibles son a partir de 2018 las anteriores estan vencidas";
-//   }
-// }
-// let vacaciones = calcularVacaciones(ultimaLic);
-// console.log(vacaciones);
-// alert("Conclusion " + nombre + " " + apellido + " Cargo Nº: " + numeroCargo + " Indicaste que te tomaste la licencia del año: " + ultimaLic + " y " + vacaciones + "!!!");
-
-
-// let confirmacion = prompt("¿Desea tomar la licencia? Ingrese Si o No");
-// let mesElejido;
-// // Repetimos hasta que se ingresa "si" o "no"
-// while (confirmacion !== "si" && confirmacion !== "no") {
-//   alert("Opción inválida. Por favor, ingrese Si o No.");
-//   confirmacion = prompt("¿Desea tomar la licencia? Ingrese Si o No");
-
-// }
-// function terminar(confirmacion) {
-//   if (confirmacion === "no") {
-//     console.log("Fin del proceso");
-//   }
-// }
-// function elegirMes(confirmacion) {
-//   if (confirmacion === "si") {
-//     mesElejido = prompt("Elige un mes");
-//     if (
-//       mesElejido === "enero" ||
-//       mesElejido === "febrero  " ||
-//       mesElejido === "marzo" ||
-//       mesElejido === "abril" ||
-//       mesElejido === "mayo " ||
-//       mesElejido === "junio " ||
-//       mesElejido === "julio " ||
-//       mesElejido === "agosto " ||
-//       mesElejido === "septiembre  " ||
-//       mesElejido === "octubre " ||
-//       mesElejido === "noviembre " ||
-//       mesElejido === "diciembre "
-//     ) {
-//       return mesElejido;
-//     } else {
-//       return elegirMes(confirmacion); // Llama a la función nuevamente si el mes no es válido //
-//     }
-//   }
-// }
-
-// mesElejido = elegirMes(confirmacion);
-// terminar();
-// alert("tu confirmacion es " + confirmacion + " para hacer uso de tus licencias, " + vacaciones);
-
-
-// alert("perfecto, elejiste el mes de " + mesElejido);
-
-// let concatenadoFinal = document.getElementById("textFinal").innerText += ` resultado Final vas a salir de licencia el mes de "${mesElejido} ${vacaciones}`
+// Obtener el array de empleados desde el localStorage
+const empleadosJSON = localStorage.getItem("empleados");
+const empleadosParseado = JSON.parse(empleadosJSON) || [];
+const ultimoEmpleado = empleadosParseado;
