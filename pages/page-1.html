@@ -112,6 +112,39 @@
 
             <p class="btn-primary" id="textFinal"></p>
         </div>
+        <form id="miFormulario">
+            <h3>Aquí vas a consultar y confirmar tus Licencias Anuales</h3>
+            <label for="licenciaAnterior">1) ¿Cuál fue el último año que saliste de Vacaciones?</label>
+            <input type="number" id="licenciaAnterior" name="licenciaAnterior"  min="2016" max="2022" oninput="mostrarAñosDisponibles(this.value)"><br><br>
+            <p id="listadoDeAños"></p>
+            <p>¡IMPORTANTE!: se autoseleccionara tu proximo año de Licencia</p>
+            
+            <label for="mesDelAño">3) Elegir un mes del año:</label>
+            <select id="mesDelAño" name="mesDelAño" required>
+              <option value="enero">Enero</option>
+              <option value="febrero">Febrero</option>
+              <option value="marzo">Marzo</option>
+              <option value="abril">Abril</option>
+              <option value="mayo">Mayo</option>
+              <option value="junio">Junio</option>
+              <option value="julio">Julio</option>
+              <option value="agosto">Agosto</option>
+              <option value="septiembre">Septiembre</option>
+              <option value="octubre">Octubre</option>
+              <option value="noviembre">Noviembre</option>
+              <option value="diciembre">Diciembre</option>
+            </select><br><br>
+        
+            <label for="quincenaSeleccionada">4) Elige en qué Quincena deseas salir de Licencia</label>
+            <select name="quincenaSeleccionada" id="quincenaSeleccionada">
+              <option  value="1-15">Desde el 1 al 15</option>
+              <option  value = "15-30" >Desde el 15 al 30</option>
+            </select>
+            <input type="submit" value="Enviar" id="btnEnviarForm">
+            <input type="button" value="Cancelar" id="btnCancelarForm">
+            <p id="mensajeFinal"></p>
+          </form>
+  
     </main>
     <footer>
 
